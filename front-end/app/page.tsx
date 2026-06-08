@@ -1,22 +1,28 @@
-"use client";
+'use client'
 
-import { apiInstance } from "@/api/api-instance";
-import UploadedImagesList from "@/components/UploadedImagesList";
-import UploadFile from "@/components/UploadFIle";
-import useUploadedImagesList from "@/hooks/use-uploaded-images-list";
-import { useMutation } from "@tanstack/react-query";
+import DragDropFile from '@/components/DragDropFile'
+import UploadedImagesList from '@/components/UploadedImagesList'
+import useUploadImage from '@/hooks/use-upload-image'
+import useUploadedImages from '@/hooks/use-uploaded-images'
+
 export default function Home() {
-    const { rows, addRow } = useUploadedImagesList();
+    const { data: images, isFetching } = useUploadedImages()
+    const { mutate: UploadImage } = useUploadImage({
+        onSucess: (files) => {},
+    })
 
     return (
-        <div>
-            <UploadFile
+        <div className="flex flex-col gap-4 p-4">
+            <DragDropFile
                 onChange={(file) => {
-                    addRow(file);
+                    UploadImage({
+                        images: [file],
+                    })
                 }}
             />
 
-            <UploadedImagesList rows={rows} />
+            <UploadedImagesList rows={images} isLoading={isFetching} />
         </div>
-    );
+    )
 }
+

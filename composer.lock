@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9670a9d3b6634caa7d2e47d23fa29b41",
+    "content-hash": "c63b64d4d93bcbf6434dcf545497b07c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -1949,6 +1949,66 @@
                 "source": "https://github.com/InterNACHI/modularize/tree/1.1.1"
             },
             "time": "2026-03-23T14:50:10+00:00"
+        },
+        {
+            "name": "isq/maio",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Isaque-Claudino-dos-Santos/merge-array-into-object.git",
+                "reference": "4b099c69de2a4dcfab2b6b5fcd165b520a505ccf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Isaque-Claudino-dos-Santos/merge-array-into-object/zipball/4b099c69de2a4dcfab2b6b5fcd165b520a505ccf",
+                "reference": "4b099c69de2a4dcfab2b6b5fcd165b520a505ccf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.86",
+                "larapack/dd": "^1.1",
+                "phpunit/phpunit": "^12.2"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers/string-helpers.php",
+                    "src/helpers/array-helpers.php",
+                    "src/helpers/benchmark-helpers.php",
+                    "src/helpers/enum-helpers.php"
+                ],
+                "psr-4": {
+                    "ISQ\\MAIO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Isaque Claudino dos Santos",
+                    "email": "isaqueclaudino12@gmail.com"
+                }
+            ],
+            "description": "A package to merge arrays into objects in PHP.",
+            "keywords": [
+                "Merge Array Into Object",
+                "array",
+                "auto",
+                "dto",
+                "maio",
+                "merge",
+                "object"
+            ],
+            "support": {
+                "issues": "https://github.com/Isaque-Claudino-dos-Santos/merge-array-into-object/issues",
+                "source": "https://github.com/Isaque-Claudino-dos-Santos/merge-array-into-object"
+            },
+            "time": "2025-11-13T00:12:54+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -10008,5 +10068,5 @@
         "php": "^8.3"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

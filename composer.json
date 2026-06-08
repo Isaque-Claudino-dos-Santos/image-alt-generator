@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.3",
         "internachi/modular": "^3.0",
+        "isq/maio": "^2.2",
         "laravel/ai": "^0.7.2",
         "laravel/framework": "^13.8",
         "laravel/sanctum": "^4.0",
