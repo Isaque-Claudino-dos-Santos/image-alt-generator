@@ -8,13 +8,15 @@ export type UploadedImagesListProps = {
 const columns: GridColDef<UploadedImagesListRow[][number]>[] = [
     {
         field: "",
-        headerName: "",
+        headerName: "Imagen",
         width: 200,
-        filterable: false,
         renderCell: (params) => {
             const { imageLink } = params.row;
             return <img src={imageLink} alt="Uploaded Image" />;
         },
+        filterable: false,
+        sortable: false,
+        hideable: false,
     },
     {
         field: "fileName",
