@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Ai\Agents\ImageAltGeneratorAgent;
+use App\Models\Media;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Ai\Enums\Lab;
 
 class ImageAltGenerateService
@@ -15,11 +17,11 @@ class ImageAltGenerateService
     ) {
     }
 
-    public function generateAltText(array $imagePath)
+    public function generateAltText(Media $image)
     {
         $agentResponse = $this->agent->prompt(
             prompt: 'Analise os anexos...',
-            attachments: $imagePath,
+            attachments: [Storage::disk($image->disk)->path($image->path)],
             model: self::AGENT_MODEL,
             provider: self::AGENT_PROVIDER
         );

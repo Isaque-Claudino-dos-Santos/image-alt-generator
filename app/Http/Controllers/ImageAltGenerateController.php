@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MediaResource;
+use App\Models\Media;
 use App\Services\ImageAltGenerateService;
 use Illuminate\Http\Request;
 
@@ -11,14 +13,17 @@ class ImageAltGenerateController extends Controller
     {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $images = [];
+        $image = Media::findOrFail($request->input('id'));
+        $altText = $this->imageAltGenerateService->generateAltText($image);
 
-        $altText = $this->imageAltGenerateService->generateAltText($images);
+        $image->update([
+            'alt' => $altText
+        ]);
 
         return response()->json([
-            'alt_text' => $altText,
+            'data' => MediaResource::make($image),
         ]);
     }
 }

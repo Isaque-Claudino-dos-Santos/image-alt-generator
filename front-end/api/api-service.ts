@@ -39,3 +39,20 @@ export const apiGetUploadedImages = () => {
         .json<ApigetuploadedimagesResponse>()
 }
 
+// ------------------------------------------------------------------------------------------
+
+export type ApiGenerateImageAltTextResponse = {
+    data: Media
+}
+export type ApiGenerateImageAltTextOptions = {
+    id: number
+}
+export const apiGenerateImageAltText = (
+    options: ApiGenerateImageAltTextOptions,
+) => {
+    const { id } = options
+    return apiInstance('/generate-alt-text')
+        .post({ id })
+        .json<ApiGenerateImageAltTextResponse>()
+}
+
