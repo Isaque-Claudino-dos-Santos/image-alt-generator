@@ -9,5 +9,6 @@ export interface Media {
     collection?: string[]
     size: number
     link: string
+    alt?: string
 }
 

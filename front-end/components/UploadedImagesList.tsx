@@ -1,6 +1,7 @@
 import { Media } from '@/api/api-models'
+import useGenerateImageAltText from '@/hooks/use-generate-image-alt-text'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
-import { Wand2 } from 'lucide-react'
+import { Loader2, Wand2 } from 'lucide-react'
 import Image from 'next/image'
 
 export type UploadedImagesListProps = {
@@ -10,6 +11,8 @@ export type UploadedImagesListProps = {
 
 export default function UploadedImagesList(props: UploadedImagesListProps) {
     const { rows, isLoading = false } = props
+    const { mutate: generateImageAlt, isPending: isPendingGenerateImageAlt } =
+        useGenerateImageAltText()
 
     const columns: GridColDef<Media[][number]>[] = [
         {
@@ -42,9 +45,24 @@ export default function UploadedImagesList(props: UploadedImagesListProps) {
             width: 150,
         },
         {
-            field: 'alternativeText',
+            field: 'alt',
             headerName: 'Texto Alternativo (alt)',
             width: 200,
+            renderCell: (params) => {
+                const alt = params.row.alt
+                if (!alt) return
+
+                return (
+                    <p
+                        title={alt}
+                        onClick={() => {
+                            navigator.clipboard.writeText(alt)
+                        }}
+                    >
+                        {alt}
+                    </p>
+                )
+            },
         },
         {
             field: 'generateAltText',
@@ -56,7 +74,16 @@ export default function UploadedImagesList(props: UploadedImagesListProps) {
                 // request generate image alt text by id of media
                 return (
                     <div className="flex h-full cursor-pointer items-center justify-center">
-                        <Wand2 />
+                        {isPendingGenerateImageAlt ? (
+                            <Loader2 className="animate-spin" />
+                        ) : (
+                            <Wand2
+                                className="cursor-pointer"
+                                onClick={() => {
+                                    generateImageAlt({ id })
+                                }}
+                            />
+                        )}
                     </div>
                 )
             },

@@ -21,7 +21,7 @@ class ImageAltGeneratorAgent implements Agent, Conversational, HasStructuredOutp
      */
     public function instructions(): Stringable|string
     {
-        return 'Gere um texto ALT em português do Brasil a partir da imagem disponível na IMAGEM fornecida. Descreva de forma objetiva o que aparece na imagem, incluindo ações e contexto quando relevantes. Siga as melhores práticas de SEO e acessibilidade, utilize linguagem natural, destaque os elementos principais, evite keyword stuffing, não faça suposições e retorne apenas o texto ALT final, sem explicações, títulos, aspas ou formatação.';
+        return 'Gere um texto ALT em português do Brasil a partir da imagem disponível na imagem em anexo fornecida. Descreva de forma objetiva o que aparece na imagem, incluindo ações e contexto quando relevantes. Siga as melhores práticas de SEO e acessibilidade, utilize linguagem natural, destaque os elementos principais, evite keyword stuffing, não faça suposições e retorne apenas o texto ALT final, sem explicações, títulos, aspas ou formatação.';
     }
 
     /**

@@ -6,6 +6,9 @@ export default function useUploadedImages() {
         queryKey: ['uploaded-images'],
         queryFn: () => apiGetUploadedImages(),
         select: (data) => data.data,
+        refetchOnWindowFocus:false,
+        refetchOnMount: false,
+        refetchInterval: false
     })
 
     return {

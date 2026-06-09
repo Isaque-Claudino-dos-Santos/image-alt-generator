@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('disk')->default('local');
             $table->string('file_hash', 64)->unique();
             $table->string('collection')->nullable();
-            $table->string('alt')->nullable();
+            $table->text('alt')->nullable();
 
             $table->unsignedBigInteger('size');
 
