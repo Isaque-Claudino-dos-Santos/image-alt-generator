@@ -22,6 +22,6 @@ class ImageAltGenerateService
             provider: Lab::Gemini
         );
 
-        return $agentResponse['value'];
+        return $agentResponse['alt'];
     }
 }
